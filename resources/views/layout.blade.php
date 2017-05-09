@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Welcome</title>
+    <title>My application</title>
   </head>
   <body>
-    Welcome
+    @yield('content')
   </body>
 </html>
