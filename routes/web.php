@@ -12,7 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $tasks = DB::table('tasks')->latest()->get();
+
+    //return $tasks;
+    return view('welcome', compact('tasks'));
+});
+
+Route::get('/tasks', function () {
+    $tasks = DB::table('tasks')->latest()->get();
+    //return $tasks;
+    return view('tasks.index', compact('tasks'));
+});
+
+Route::get('/tasks/{task}', function ($id) {
+    $task = DB::table('tasks')->find($id);
+    //return $tasks;
+    return view('tasks.show', compact('task'));
 });
 
 Route::get('/about', function () {
