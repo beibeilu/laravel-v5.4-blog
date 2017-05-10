@@ -3,7 +3,9 @@
 
 @section ('content')
 
-<h1>A place to show new posts.</h1>
+<h1>{{$post->title}}</h1>
+
+{{ $post->body }}
 
 
 @endsection
