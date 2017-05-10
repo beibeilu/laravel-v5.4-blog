@@ -12,6 +12,10 @@ class Post extends Model
     // protected $fillable = ['title', 'body'];
     // $guarded - blacklist.
 
-    
+    public function comments()
+    {
+        //returns a full class path.
+        return $this->hasMany(Comment::class);
+    }
 
 }
