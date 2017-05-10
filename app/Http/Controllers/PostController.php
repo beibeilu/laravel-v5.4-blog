@@ -12,8 +12,6 @@ class PostController extends Controller
 
     public function index(){
 
-        return view('posts.index');
-
     }
 
     public function show(){
@@ -30,15 +28,12 @@ class PostController extends Controller
 
     public function store(){
 
-        //dd(request(['title', 'body']));
-
-        // $post = new Post;
-        // $post->title = request('title');
-        // $post->body = request('body');
-
-        // $post->save();
-
-        // Or
+        // if this is getting lengthy, use dedicated form request classes.
+        // those are automatically generated in App\HTTP\Request directory
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
 
         Post::create(request(['title', 'body']));
 

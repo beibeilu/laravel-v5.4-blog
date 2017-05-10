@@ -18,13 +18,15 @@
 
   <div class="form-group">
     <label for="body">Body</label>
-    <textarea class="form-control" id="body" name="body" rows="10"></textarea>
+    <textarea class="form-control" id="body" name="body" rows="10" ></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Publish</button>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Publish</button>
+  </div>
+
+    @include ('layouts.errors')
 
 </form>
-
-
 
 @endsection
