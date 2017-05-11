@@ -18,6 +18,12 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function user()
+    {
+        //returns a full class path.
+        return $this->belongsTo(User::class);
+    }
+
     public function addComment($body){
 
         //  ----------- Or -----------

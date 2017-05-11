@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function post()
+    {
+        //returns a full class path.
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        //returns a full class path.
+        return $this->hasMany(Comment::class);
+    }
 }

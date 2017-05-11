@@ -12,4 +12,10 @@ class Comment extends Model
         //returns a full class path.
         return $this->belongsTo(Post::class);
     }
+
+    public function user()
+    {
+        //returns a full class path.
+        return $this->belongsTo(User::class);
+    }
 }
