@@ -5,6 +5,10 @@
 
 <h1>{{$post->title}}</h1>
 
+<p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }} by <a href="#">
+    {{ $post->user->name }}
+</a></p>
+
 {{ $post->body }}
 
 <hr>

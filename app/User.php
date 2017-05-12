@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
 
-    public function post()
+    public function posts()
     {
         //returns a full class path.
         return $this->hasMany(Post::class);
@@ -38,5 +38,10 @@ class User extends Authenticatable
     {
         //returns a full class path.
         return $this->hasMany(Comment::class);
+    }
+
+    public function publish(Post $post){
+        $this->posts()->save($post);
+
     }
 }
