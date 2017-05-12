@@ -26,14 +26,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
 
     return [
-        'title' => $faker->sentence(5),
-        'body' => $faker->text(),
+        'user_id' => function(){
+            return factory(App\User::class)->create()->id;
+        },
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph
     ];
 });
 
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {
 
     return [
+        'user_id' => function(){
+            return factory(App\User::class)->create()->id;
+        },
         'body' => $faker->text(),
     ];
 });
