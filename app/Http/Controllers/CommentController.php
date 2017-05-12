@@ -16,8 +16,7 @@ class CommentController extends Controller
             'body' => 'required|min:10'
         ]);
 
-        $post->addComment(request('body'));
-
+        auth()->user()->commentOn($post, request()->body);
 
         return back();
     }

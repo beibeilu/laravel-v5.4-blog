@@ -44,4 +44,13 @@ class User extends Authenticatable
         $this->posts()->save($post);
 
     }
+    public function commentOn(Post $post, $body){
+
+        $this->comments()->create([
+            'post_id' => $post->id,
+            'body' => request('body')
+        ]);
+
+    }
+
 }
