@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Post;
 
-
 class PostController extends Controller
 {
     public function __construct(){
@@ -15,9 +14,29 @@ class PostController extends Controller
 
     public function index(){
 
-        $posts = Post::latest()->get();
+        $posts = Post::latest()
+            ->filter(request(['month', 'year']))
+            ->get();
 
-        return view('posts.index', compact('posts'));
+        // filters
+
+        // if ($month = request('month')) {
+        //     $posts->whereMonth('created_at', Carbon::parse($month)->month);
+        // }
+        //
+        // if ($year = request('year')) {
+        //     $posts->whereYear('created_at', Carbon::parse($year)->year);
+        // }
+        //
+        // $posts = $posts->get();
+
+
+
+        // query
+
+        $archives = Post::archives();
+
+        return view('posts.index', compact('posts', 'archives'));
     }
 
     public function show(Post $post){
