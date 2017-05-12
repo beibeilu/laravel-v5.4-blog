@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Post;
 
+use App\Repositories\PostRepository;
+
 class PostController extends Controller
 {
     public function __construct(){
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index(){
+    public function index(PostRepository $posts){
+        // dd($posts->all());
+        // $posts = $posts->all();
 
         $posts = Post::latest()
             ->filter(request(['month', 'year']))
