@@ -113,7 +113,7 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        'theme' => 'laravelblog_mail',
 
         'paths' => [
             resource_path('views/vendor/mail'),
