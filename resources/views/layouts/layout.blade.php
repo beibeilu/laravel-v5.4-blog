@@ -43,6 +43,12 @@
 
         <div class="row">
 
+            @if ($flash = session('message'))
+                <div id="flash-message" class="alert alert-success" role="alert">
+                    {{ $flash }}
+                </div>
+            @endif
+
 
               <div class="col-sm-8 blog-main">
                   @yield('content')
