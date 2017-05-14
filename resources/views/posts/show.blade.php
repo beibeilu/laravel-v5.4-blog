@@ -11,41 +11,23 @@
 
 {{ $post->body }}
 
-<hr>
-<div class="comments">
-    <ul class="list-group">
-    @foreach ($post->comments as $comment)
-        <li class="list-group-item">
-            <strong>{{ $comment->created_at->diffForHumans() }}</strong></br>
-            {{ $comment->body}}
-        </li>
-    @endforeach
+@if (count($post->tags))
+    <p>Tags: </p>
+
+    <ul>
+        @foreach ($post->tags as $tag)
+            <li>
+                <a href="/posts/tags/{{ $tag->name }}">
+                {{ $tag->name }}
+                </a>
+            </li>
+        @endforeach
     </ul>
-</div>
+@endif
 
-{{-- Add a Comment --}}
 
-<div class="panel panel-default">
-      <div class="panel-heading">
-            <h3 class="panel-title">Add a Comment</h3>
-      </div>
-      <div class="panel-body">
-          <form method="POST" action="/posts/{{$post->id}}/comments">
-                 {{-- {{ method_field('PATCH') }} --}}
-                 {{ csrf_field() }}
+<hr>
 
-                <div class="form-group">
-                    <textarea name="body" placeholder ="Your comment here." class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Add Comment</button>
-                </div>
-          </form>
-
-          @include ('layouts.errors')
-
-      </div>
-
-</div>
+@include('posts.comment')
 
 @endsection

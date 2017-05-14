@@ -15,6 +15,7 @@ class PostController extends Controller
     }
 
     public function index(PostRepository $posts){
+
         // dd($posts->all());
         // $posts = $posts->all();
 
