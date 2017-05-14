@@ -25,6 +25,12 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function tags()
+    {
+        // Many to many.
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function scopeFilter($query, $filters)
     {
         if ($month = $filters['month']) {
